@@ -16,7 +16,7 @@ with sync_playwright() as p:
     assert page.locator('.brand img').evaluate('(el)=>el.complete&&el.naturalWidth>0')
     expect(page.locator('a[href="mailto:ajrc.servicios@gmail.com"]')).to_be_visible()
     links = page.locator('a[href^="https://wa.me/"]').evaluate_all('(els)=>els.map(e=>e.href)')
-    assert len(links) == 8
+    assert len(links) == 9
     for link in links:
         assert urlparse(link).path == '/584126627894'
         assert parse_qs(urlparse(link).query)['text'][0].startswith('Hola, AjrcServicios.')
