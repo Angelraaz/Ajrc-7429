@@ -3,6 +3,8 @@ import Home from "./pages/home";
 import { Provider } from "./components/provider";
 import { AgentFeedback, RunableBadge } from "@runablehq/website-runtime";
 
+import "./revision.css";
+
 function App() {
   return (
     <Provider>

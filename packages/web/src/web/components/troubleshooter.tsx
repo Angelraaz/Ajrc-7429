@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { ArrowLeft, ArrowRight, ShieldCheck, RotateCcw, Copy, Check, TriangleAlert, MessageCircle, ChevronRight, Sparkles } from 'lucide-react';
+import { ArrowLeft, ArrowRight, ShieldCheck, RotateCcw, Copy, TriangleAlert, MessageCircle, ChevronRight } from 'lucide-react';
 import { buildSummary, detailOptions, detailQuestions, equipmentOptions, getGuidance, safetyOptions, symptomOptions, type Answers } from '../lib/troubleshooter';
 import { whatsapp } from '../lib/business';
 
@@ -38,9 +38,7 @@ export function Troubleshooter() {
     catch { setManualCopy(true); setCopyState('Selecciona el resumen de abajo y cópialo manualmente.'); }
     finally { setCopying(false); }
   }
-  return <section className="section orientation" id="orientacion" aria-labelledby="orientation-title">
-    <div className="container orientation-grid">
-      <div className="orientation-intro"><span className="eyebrow"><Sparkles size={16} /> UN BUEN PRIMER PASO</span><h2 id="orientation-title">¿Qué le pasa a<br />tu computadora?</h2><p>No necesitas saber de tecnología. Responde unas preguntas y descubre por dónde empezar.</p><div className="orientation-features"><span><Check size={18} /> Recomendaciones sencillas y seguras</span><span><Check size={18} /> Sin registros ni datos personales</span><span><Check size={18} /> Resumen listo para compartir</span></div><div className="orientation-note"><ShieldCheck size={23} /><p>Este orientador no es un diagnóstico. El diagnóstico técnico se realiza de forma presencial o remota, según el problema y previa coordinación. Tus respuestas no se guardan ni se envían automáticamente.</p></div></div>
+  return <div className="chat-wizard">
       <div className="wizard">
         <div className="wizard-label"><span><span className="status-dot" /> ORIENTADOR DE PROBLEMAS</span><small>{step < 4 ? `Paso ${step + 1} de 4` : 'Orientación lista'}</small></div>
         <div className="progress" aria-hidden="true">{[0, 1, 2, 3].map(i => <span key={i} className={i <= step ? 'filled' : ''} />)}</div>
@@ -56,6 +54,5 @@ export function Troubleshooter() {
         </div>}
         <div className="wizard-footnote"><ShieldCheck size={13} /> Orientación inicial. Diagnóstico presencial o remoto, según el caso.</div>
       </div>
-    </div>
-  </section>;
+  </div>;
 }
