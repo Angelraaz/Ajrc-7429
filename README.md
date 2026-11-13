@@ -1,19 +1,39 @@
-# App template
+# Managed App Releases
 
-Runable copies this Bun and Turborepo project into each new sandbox.
+`releases.json` is the source of truth for app-impacting template releases. The latest entry's
+version is also written to `.template-version`.
 
-The root package commands are the external contract:
+The derived files (`.template-version` and `.runable/protected-files.json`) come from
+`releases.json` and the `__` files. The generator lives outside this tree, in
+`runable/packages/sandbox/app-template/`. It is platform tooling, not an app script, and not part of
+the app's `bun run lint`. The image build fails on stale output, so run
+`bun run --filter @runable/sandbox build:app-template` from the monorepo root after changing a `__`
+file or adding a release.
 
-- `bun run dev` starts the web app.
-- `bun run dev:desktop` and `bun run dev:mobile` start platform clients.
-- `bun run build` builds every package.
-- `bun run start` starts or restarts the production server.
-- `bun run stop` stops the production server.
-- `bun run lint` and `bun run typecheck` validate the project.
-- The `db:generate`, `db:migrate`, and `db:push` commands manage the database.
+At scaffold time the platform rewrites the `__` files and re-stamps `protected-files.json` from its
+current template, so both can be newer than `.template-version`, which keeps the version baked into
+the box's image. Template migrations must leave `__` files alone.
 
-Deployment tools depend on these command names. Their implementations may change, but the names must remain stable.
+Add a release entry in the same commit as the template changes:
 
-The web package owns the API, database, and shared web interface. The mobile package is an Expo client. The desktop package is an Electron shell around the web app. Services use the fixed ports defined in `__ports.cjs`, and the web health endpoint is `/api/health`.
+```json
+{
+  "version": "0.1.1",
+  "policy": "optional"
+}
+```
 
-Secrets belong in the root `.env` file. Browser values must use the `VITE_` prefix. Commands prefixed with `internal:` are for template maintenance.
+Only add fields when the template diff is insufficient or shared checks need an override:
+
+```json
+{
+  "version": "0.1.2",
+  "policy": "required",
+  "migration_notes": ["Preserve customized Expo plugins."],
+  "verification_commands": ["bun install", "bun run typecheck", "bun run build"],
+  "runtime_checks": ["The web preview starts without startup errors."]
+}
+```
+
+Runable derives `revision` and `released_at` from the commit where the version first appears. The
+explicit values on `0.1.0` only seed the historical baseline and must not be added to new releases.
