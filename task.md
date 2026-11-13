@@ -19,3 +19,12 @@ Verificación: 120 tests Bun / 1530 aserciones, cero fallos. 8 recorridos UI com
 - [ ] Entregar revisión actual.
 
 Pruebas de revisión: tests unitarios 120/120; 8 flujos navegador completos; 7 tamaños sin overflow; axe escritorio/móvil sin hallazgos. Validado texto sin teléfono/correo (destinos de enlaces conservados), imágenes cargadas, proceso ausente, dirección y Google Maps correctos, metadatos y JSON-LD válidos. Rossystilos sin URL no confirmada; lista extensible en lib/partners.ts.
+
+## Revisión: fondo en video, transparencia y chat
+- [x] Video revisado; 10s, original 5.12MB. Optimizado a 1.20MB sin audio, con poster.
+- [x] Fondo del logo eliminado; recortado a 900×208, transparencia y uso en cabecera verificados visualmente.
+- [x] Implementar video accesible y asistente local cordial.
+- [x] Tests precios/servicios, teclado, mute/pausa, móviles y build/lint.
+- [ ] Entregar actualización.
+
+Verificación de esta actualización: 141 tests Bun, 1622 aserciones, cero fallos. Regresión del orientador: ocho recorridos completos. Video cargado y reproduciéndose silenciado/en bucle, archivo sin pista de audio, pausa/reanudación manual y fuera de pantalla verificadas; movimiento reducido muestra poster sin autoplay y permite reproducción voluntaria. Chat: foco, servicios, precio con contexto y número WhatsApp correcto, reinicio, diagnóstico, ubicación y Escape verificados. Siete tamaños 320–1440px sin overflow; axe con chat abierto a 320, 390 y 1440px sin hallazgos WCAG A/AA. Capturas escritorio/móvil revisadas: logo transparente y texto legible. Sin errores JS, llamadas RPC ni persistencia local del chat. Build/lint pasan; solo avisos previos de plantilla/Vite y tamaño de bundle. Servidor puerto 4200 activo. No se contactó al negocio ni se publicaron cambios.
