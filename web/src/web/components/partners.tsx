@@ -1,5 +1,0 @@
-import { partners } from '../lib/partners';
-
-export function Partners() {
-  return <section className="partners-section" aria-labelledby="partners-title"><div className="container partners-layout"><div><span className="eyebrow">CONEXIONES QUE SUMAN</span><h2 id="partners-title">Nuestros partners</h2></div><ul className="partners-list">{partners.map(partner => <li key={partner.name}>{partner.url ? <a href={partner.url} target="_blank" rel="noopener noreferrer" className="partner-item"><img src={partner.image} alt={`Logo de ${partner.name}`} width="92" height="92" loading="lazy" /><span>{partner.name}</span></a> : <div className="partner-item"><img src={partner.image} alt={`Logo de ${partner.name}`} width="92" height="92" loading="lazy" /><span>{partner.name}</span></div>}</li>)}</ul></div></section>;
-}
