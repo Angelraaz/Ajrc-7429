@@ -1,10 +1,11 @@
 import { useEffect, useRef, useState, type FormEvent } from 'react';
-import { MessageCircle, Send, X, RotateCcw, ArrowUpRight, ChevronDown } from 'lucide-react';
+import { Send, X, RotateCcw, ArrowUpRight, ChevronDown } from 'lucide-react';
 import { FaWhatsapp } from 'react-icons/fa6';
 import { getServiceReply, welcomeReply, type ServiceReply } from '../lib/service-chat';
 import { whatsapp } from '../lib/business';
 import { Troubleshooter } from './troubleshooter';
 import { faqs } from '../lib/faqs';
+import { ComputerMascot } from './computer-mascot';
 
 type ChatMessage = { id: number; from: 'assistant' | 'visitor'; text: string; reply?: ServiceReply };
 const firstMessage: ChatMessage = { id: 0, from: 'assistant', text: welcomeReply.text };
@@ -44,9 +45,9 @@ export function ServiceChat() {
   function reset() { setView('chat'); topicRef.current = ''; setMessages([firstMessage]); setInput(''); inputRef.current?.focus({ preventScroll: true }); }
 
   return <>
-    <button className="chat-launcher" ref={launcherRef} aria-expanded={open} aria-controls={open ? 'service-chat' : undefined} onClick={() => open ? close() : setOpen(true)} aria-label={open ? 'Cerrar asistente de servicios' : 'Abrir asistente de servicios'}>{open ? <X size={20} /> : <MessageCircle size={22} />}<span>¿Te orientamos?</span></button>
+    <button className="chat-launcher" ref={launcherRef} aria-expanded={open} aria-controls={open ? 'service-chat' : undefined} onClick={() => open ? close() : setOpen(true)} aria-label={open ? 'Cerrar asistente de servicios' : 'Abrir asistente de servicios'}><ComputerMascot happy={open} /><span>{open ? '¡Aquí para ayudarte!' : '¿Te orientamos?'}</span></button>
     {open && <dialog open id="service-chat" className="service-chat" aria-labelledby="chat-title" onKeyDown={event => { if (event.key === 'Escape') { event.preventDefault(); close(); } }}>
-      <header className="chat-header"><span className="chat-avatar"><MessageCircle size={21} /></span><div><h2 id="chat-title">Asistente de servicios</h2><p>AjrcServicios · Respuestas automáticas</p></div><button className="chat-icon-button" onClick={close} aria-label="Cerrar chat"><X size={20} /></button></header>
+      <header className="chat-header"><span className="chat-avatar"><ComputerMascot happy /></span><div><h2 id="chat-title">Asistente de servicios</h2><p>AjrcServicios · Respuestas automáticas</p></div><button className="chat-icon-button" onClick={close} aria-label="Cerrar chat"><X size={20} /></button></header>
       <div className="chat-views" aria-label="Herramientas del asistente">{([['chat', 'Conversación'], ['orientation', 'Orientador'], ['faq', 'Preguntas frecuentes']] as const).map(([key, label]) => <button key={key} aria-pressed={view === key} onClick={() => setView(key)}>{label}</button>)}</div>
       <div className="chat-tools-content" hidden={view !== 'orientation'}><Troubleshooter /></div>
       <div className="chat-tools-content chat-faq" hidden={view !== 'faq'}><h3>Resolvemos tus dudas</h3><p>Información clara antes de coordinar tu atención.</p><div className="faq-list">{faqs.map(([question, answer]) => <details key={question}><summary>{question}<ChevronDown size={16} /></summary><p>{answer}</p></details>)}</div></div>

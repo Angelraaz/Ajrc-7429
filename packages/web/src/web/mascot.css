@@ -1,0 +1,9 @@
+/* Mascota del asistente y foco de partners */
+.chat-launcher{min-height:64px;padding:5px 17px 5px 7px;gap:10px;border-radius:22px;transition:background .2s,box-shadow .2s}
+.service-chat{bottom:100px;height:min(610px,calc(100dvh - 135px))}
+.computer-mascot{display:block;width:56px;height:56px;flex-shrink:0}
+.chat-avatar{width:46px;height:46px;background:transparent;border-radius:0}
+.chat-avatar .computer-mascot{width:46px;height:46px}
+.chat-launcher:focus-visible{outline:3px solid var(--mint);outline-offset:4px}
+.partner-item:focus-visible{outline:3px solid #269a78;outline-offset:6px;border-radius:8px}
+@media(max-width:600px){.chat-launcher{width:64px;height:64px;min-height:64px;padding:4px}.chat-launcher .computer-mascot{width:54px;height:54px}.chat-avatar{width:42px;height:42px}.chat-avatar .computer-mascot{width:42px;height:42px}.service-chat{bottom:100px;height:min(585px,calc(100dvh - 125px))}}

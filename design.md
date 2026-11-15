@@ -14,3 +14,6 @@ Video aportado de 10s en fondo de la portada, sin pista de audio, autoplay muted
 
 ## Revisión aprobada: formulario y testimonios
 Sin control ni texto de audio visibles en portada; conservar preferencias de movimiento y ahorro de datos. Orientador seguro de cuatro pasos y seis FAQ dentro del asistente local. Sustituir sus secciones por formulario azul con campos nombre, teléfono, correo y problema; prepara mailto a correo comercial sin almacenamiento ni envío automático. Testimonios de Berthila Rossy, Carlos Mendoza y Mariana Silva aportados por el usuario, sin fotos ni puntuaciones inventadas. Mantener contacto, partners, analítica y badge.
+
+## Revisión aprobada: partners y mascota del chat
+Mantener la identidad y distribución actuales. Añadir JcarRc con el logo aportado y enlace https://jcarrc-nine.vercel.app; enlazar Rossystilos a https://rossystylos.vercel.app/. URLs solo como destino, nunca como texto visible. Mascota de PC con pantalla expresiva, carcasa azul noche y detalles turquesa: enojada con chat cerrado, contenta en el botón y cabecera al abrirlo. Conservar foco, Escape, etiquetas accesibles y funciones del asistente. Cambios aprobados para subir a main en GitHub; sin publicación en Runable.

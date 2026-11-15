@@ -4,6 +4,7 @@ import { Provider } from "./components/provider";
 import { AgentFeedback, RunableBadge } from "@runablehq/website-runtime";
 
 import "./revision.css";
+import "./mascot.css";
 
 function App() {
   return (
