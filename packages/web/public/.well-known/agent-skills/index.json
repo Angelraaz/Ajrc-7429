@@ -1,0 +1,12 @@
+{
+  "$schema": "https://schemas.agentskills.io/discovery/0.2.0/schema.json",
+  "skills": [
+    {
+      "name": "ajrc-servicios",
+      "type": "skill-md",
+      "description": "Informs and routes requests to AjrcServicios, a technical support business in Punto Fijo, Venezuela: services, hours, location, and contact channels.",
+      "url": "/.well-known/agent-skills/ajrc-servicios/SKILL.md",
+      "digest": "sha256:67e06f20016cde973577aefcbbb40676d0e5fc448e882005c1a176a3f9df4174"
+    }
+  ]
+}

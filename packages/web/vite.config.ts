@@ -5,6 +5,7 @@ import path from "path";
 import runableAnalyticsPlugin from "./vite/__plugins/runable-analytics-plugin";
 import honoDevPlugin from "./vite/__plugins/hono-dev-plugin";
 import assetOptimizerPlugin from "./vite/__plugins/asset-optimizer-plugin";
+import linkHeadersPlugin from "./vite/link-headers-plugin";
 import ports from "../../__ports.cjs";
 
 const root = path.resolve(__dirname, "../..");
@@ -23,6 +24,7 @@ export default defineConfig(({ mode }) => {
       runableAnalyticsPlugin(),
       tailwind(),
       assetOptimizerPlugin(),
+      linkHeadersPlugin(),
     ],
     resolve: {
       alias: {

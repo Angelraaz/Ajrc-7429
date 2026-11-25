@@ -1,0 +1,71 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "AjrcServicios public API",
+    "version": "1.0.0",
+    "description": "Public status endpoints of the AjrcServicios website. They do not require authentication and do not book services."
+  },
+  "servers": [
+    { "url": "https://ajrcs.vercel.app" }
+  ],
+  "paths": {
+    "/api/health": {
+      "get": {
+        "operationId": "getHealth",
+        "summary": "Health check",
+        "responses": {
+          "200": {
+            "description": "The API is running.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": ["status"],
+                  "properties": {
+                    "status": { "type": "string", "example": "ok" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/rpc/ping": {
+      "post": {
+        "operationId": "ping",
+        "summary": "Ping the API",
+        "requestBody": {
+          "required": false,
+          "content": {
+            "application/json": {
+              "schema": { "type": "object" }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Pong with the server time.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": ["json"],
+                  "properties": {
+                    "json": {
+                      "type": "object",
+                      "required": ["message"],
+                      "properties": {
+                        "message": { "type": "string", "example": "Pong! 1795570138055" }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,61 @@
+# robots.txt for AjrcServicios (RFC 9309)
+
+Sitemap: https://ajrcs.vercel.app/sitemap.xml
+# Policy: the public site is open to search and AI answer crawlers.
+# AI training crawlers are not allowed to collect content for model training.
+# The API under /api/ is not meant for any crawler.
+
+# Content Signals (contentsignals.org): ai-train=no, search=yes, ai-input=yes
+User-agent: *
+Content-Signal: ai-train=no, search=yes, ai-input=yes
+Allow: /
+Disallow: /api/
+
+# AI search crawlers: fetch pages for AI assistant answers. Allowed.
+User-agent: OAI-SearchBot
+Allow: /
+Disallow: /api/
+
+User-agent: Claude-SearchBot
+Allow: /
+Disallow: /api/
+
+User-agent: PerplexityBot
+Allow: /
+Disallow: /api/
+
+# AI training crawlers: blocked from collecting training data.
+# Blocking these does not affect appearance in AI search results.
+User-agent: GPTBot
+Disallow: /
+
+User-agent: ClaudeBot
+Disallow: /
+
+User-agent: Google-Extended
+Disallow: /
+
+User-agent: Applebot-Extended
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: Bytespider
+Disallow: /
+
+User-agent: Amazonbot
+Disallow: /
+
+# User-triggered fetchers: retrieve pages when a user asks. Allowed.
+User-agent: ChatGPT-User
+Allow: /
+Disallow: /api/
+
+User-agent: Claude-User
+Allow: /
+Disallow: /api/
+
+User-agent: Perplexity-User
+Allow: /
+Disallow: /api/

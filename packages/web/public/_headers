@@ -1,0 +1,15 @@
+/
+  Link: </robots.txt>; rel="describedby"; type="text/plain"
+  Vary: Accept
+
+/.well-known/api-catalog
+  Content-Type: application/linkset+json
+
+/auth.md
+  Content-Type: text/markdown; charset=utf-8
+
+/.well-known/openapi.json
+  Content-Type: application/vnd.oai.openapi+json;version=3.1
+
+/.well-known/api-docs.md
+  Content-Type: text/markdown; charset=utf-8
